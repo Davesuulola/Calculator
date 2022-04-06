@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="calculator" class="main">
+<h3 class="header">Calculator</h1>
+<button style="margin-left: 195px; background: transparent;" class="exit"><img src="./Annotation 2022-02-17 102703.jpg" alt=""></button>
+<button  style="margin-top: 45px; border: none; margin-left: -9px; background: transparent;" class="exit"><img src="./3 lines.jpg" alt=""></button>
+<button style="margin-left: 235px; margin-top: -1px; background: transparent;" class="exit"><img style="height: 17px; width: 17px; opacity: .8;" src="./icons8-square-spinner-24.png" alt=""></button>
+<!-- <button  style="margin-top: 47px; border: none; margin-left: 7px; background-color: transparent; " class="exit"><img style="width: 20px; height: 15px;" src="./bar.png" alt=""></button> -->
+<button style="margin-left: 275px; margin-top: -3px; background: transparent;" onclick="document.getElementById('calculator').style.display='none'" class="exit"><img src="./icons8-delete-24.png" alt=""></button>
+
+
+<h1 style="font-size: 21px; margin-top: 48px; font-weight: 400; margin-left: 35px;">Standard</h1>
+<button  style="margin-top: -45px; border: none; margin-left: 270px; background: transparent;" class="exit"><img src="./icons8-refresh-24.png" alt=""></button>
+<div style=" position: absolute; width: 318px; display: flex; max-width: 320px;  
+ align-items: center; justify-content: right; overflow: hidden; padding-top: 10px; height: 80px;" id="space">
+ <h3 style="position: absolute; margin-top: -45px;" id="record"></h3>
+    <h1  style="font-size: 63px; position: absolute;  margin-left: 280px; margin-bottom: 25px;" id="bar"></h1></div>
+
+<button style="margin-left: 0px;" class="ms">MC</button>
+<button style="margin-left: 0px;" class="ms">MR</button>
+<button style="margin-left: 0px;" class="ms">M+</button>
+<button style="margin-left: 0px;" class="ms">M-</button>
+<button style="margin-left: 0px;" class="ms">MS</button>
+<button style="margin-left: 0px;" class="ms">M </button>
+
+<button onclick="op('%')" style="margin-left: 5px;" class="functions">%</button>
+
+<button onclick="everything()" class="functions">CE</button>
+
+<button class="functions">C</button>
+
+<button onclick="del()"  class="functions">DEL</button>
+
+
+<button style="margin-left: 5px;" class="functions1">⅟x</button>
+
+<button class="functions1">X</button>
+
+<button class="functions1">√</button>
+
+<button onclick="op('/')"  class="functions1">÷</button>
+
+
+<button onclick="number(7)" style="margin-left: 5px;" class="functions2"><strong style="font-size: 20px;">7</strong></button>
+
+<button onclick="number(8)" class="functions2"><strong style="font-size: 20px;">8</strong></button>
+
+<button onclick="number(9)" class="functions2"><strong style="font-size: 20px;">9</strong></button>
+
+<button onclick="op('*')"  class="functions2"><strong style="font-size: 20px;">x</strong></button>
+
+
+<button onclick="number(4)" style="margin-left: 5px;" class="functions3"><strong style="font-size: 20px;">4</strong></button>
+
+<button onclick="number(5)" class="functions3"><strong style="font-size: 20px;">5</strong></button>
+
+<button onclick="number(6)" class="functions3"><strong style="font-size: 20px;">6</strong></button>
+
+<button onclick="op('-')"  class="functions3"><strong style="font-size: 20px;">-</strong></button>
+
+
+<button onclick="number(1)" style="margin-left: 5px;" class="functions4"><strong style="font-size: 20px;">1</strong></button>
+
+<button onclick="number(2)" class="functions4"><strong style="font-size: 20px;">2</strong></button>
+
+<button onclick="number(3)" class="functions4"><strong style="font-size: 20px;">3</strong></button>
+
+<button onclick="op('+')" class="functions4"><strong style="font-size: 20px;">+</strong></button>
+
+
+<button style="margin-left: 5px;" class="functions5"><strong style="font-size: 20px;">±</strong></button>
+
+<button onclick="number(0)" class="functions5"><strong style="font-size: 20px;">0</strong></button>
+
+<button onclick="number(0)" class="functions5"><strong style="font-size: 20px;">.</strong></button>
+
+<button onclick="equals('=')" class="functions6"><strong style="font-size: 20px;">=</strong></button>
+
+
+
+
+
+
+</div>
+
+
+</body>
+<script>
+let operator="";
+let upper = document.querySelector('#record')
+let down = document.querySelector('#bar')
+
+function number(parameter){
+    down.innerHTML+=parameter
+document.getElementById('space').style.border='2px solid black'
+}
+function op(signs){
+if (operator!=""){
+    return
+}
+firstnumber = down.innerHTML
+upper.innerHTML = firstnumber + signs
+down.innerHTML=('')
+operator = signs
+}
+function put()
+{
+    secondnumber = Number(document.querySelector('#bar').innerHTML)
+   
+}
+function equals(){
+    put()
+    
+    if (operator == '+'){
+        upper.innerHTML+=down.innerHTML + '='
+   document.querySelector('#bar').innerHTML=Number(firstnumber) + Number(secondnumber)
+    }
+else  if(operator == '-'){
+
+
+upper.innerHTML+=down.innerHTML + '='
+document.querySelector('#bar').innerHTML=Number(firstnumber) - Number(secondnumber)
+
+
+}
+else  if(operator == '*'){
+
+upper.innerHTML+=down.innerHTML + '='
+        document.querySelector('#bar').innerHTML=Number(firstnumber) * Number(secondnumber)
+
+
+}
+else  if(operator == '/'){
+
+upper.innerHTML+=down.innerHTML + '='
+        document.querySelector('#bar').innerHTML=Number(firstnumber) / Number(secondnumber)
+
+
+}
+else  if(operator == '%'){
+
+upper.innerHTML+=down.innerHTML + '='
+        document.querySelector('#bar').innerHTML=Number(firstnumber)/100 * Number(secondnumber)
+
+
+}
+ 
+operator='';
+
+}
+function everything(){
+down.innerHTML="";
+upper.innerHTML="";
+
+document.getElementById('space').style.border=''
+}
+function del(parameter){
+if(upper.innerHTML!=""){
+    upper.innerHTML="";
+    return
+}
+
+down.innerHTML=down.innerHTML.slice(0,-1)
+}
+
+
+</script>
+</html>
